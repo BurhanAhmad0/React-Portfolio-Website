@@ -1,9 +1,9 @@
 import React from 'react'
 
-import BlogNavbar from '../../components/Blog/BlogNavbar'
-import BlogHeroSection from '../../components/Blog/BlogHeroSection'
-import BlogCard from '../../components/Blog/BlogCard'
-import BlogFooter from '../../components/Blog/BlogFooter'
+import BlogNavbar from '../../components/Blog/BlogNavbar.jsx'
+import BlogHeroSection from '../../components/Blog/BlogHeroSection.jsx'
+import BlogCard from '../../components/Blog/BlogCard.jsx'
+import BlogFooter from '../../components/Blog/BlogFooter.jsx'
 
 const Blog = () => {
   return (

@@ -1,8 +1,8 @@
 import { useState } from 'react'
 import { Routes, Route } from 'react-router-dom'
 
-import LandingPage from './pages/user/LandingPage'
-import Blog from './pages/user/Blog'
+import LandingPage from './pages/user/LandingPagg.jsx'
+import Blog from './pages/user/Blog.jsx'
 
 function App() {
 
