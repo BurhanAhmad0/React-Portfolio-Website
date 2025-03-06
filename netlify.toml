@@ -1,6 +1,6 @@
 [build]
   command = "yarn build"  # Your build command
-  publish = "dist"        # Publish directory where Netlify should serve your files
+  publish = "src"        # Publish directory where Netlify should serve your files
 
 [[redirects]]
   from = "/*"
