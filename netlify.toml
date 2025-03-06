@@ -1,8 +1,12 @@
 [build]
-    publish = "dist"
-    command = "yarn build"
+  publish = "dist"
+  command = "yarn build"
 
 [[redirects]]
-    from = "/*"
-    to = "/index.html"
-    status = 200
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+# Ignore the config files
+[functions]
+  included_files = ["!vite.config.js", "!eslint.config.js"]
