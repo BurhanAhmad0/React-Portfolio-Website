@@ -24,7 +24,7 @@ const Footer = () => {
                     user_enquiry: comment,
                 }
             );
-            console.log('Document created successfully:', response);
+            // console.log('Document created successfully:', response);
             // Optionally, clear the form after submission
             setEmail('');
             setComment('');
