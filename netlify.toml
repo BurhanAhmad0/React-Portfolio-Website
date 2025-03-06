@@ -1,9 +1,0 @@
-[build]
-  command = "yarn build"  # Your build command
-  publish = "src"        # Publish directory where Netlify should serve your files
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-  
