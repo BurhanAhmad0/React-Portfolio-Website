@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Routes, Route } from 'react-router-dom'
 
-import LandingPage from './pages/user/LandingPagg.jsx'
+import LandingPage from './pages/user/LandingPage.jsx'
 import Blog from './pages/user/Blog.jsx'
 
 function App() {
