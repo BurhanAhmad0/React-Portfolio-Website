@@ -1,0 +1,61 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: "Poppins";
+  src: local("Poppins-Regular"),
+    url('./assets/fonts/Poppins/Poppins-Regular.ttf')
+}
+
+@layer base {
+
+  ::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: var(--primary-color);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: rgb(215, 176, 124);
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #cd853f;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    font-family: Poppins;
+  }
+
+  .header-bg {
+    display: flex;
+    flex-direction: column;
+    background-color: #a0522d;
+    /* Fallback color */
+    background-image: url(/Img/bg-img.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
+  }
+
+
+  @media (max-width: 768px) {
+    .header-bg {
+      background-position: top;
+      /* Adjust positioning for mobile */
+    }
+  }
+
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+    /* Chrome, Safari, and Opera */
+  }
+}
+
+.menu-link {
+  @apply transition-all hover:border-b-2 hover:border-yellow-600;
+}
