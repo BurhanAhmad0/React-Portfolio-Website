@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 
 import Sidebar from './Sidebar'
 
@@ -19,7 +20,7 @@ const Header = () => {
                     <li><a onClick={() => {handleScroll('home')}} title="Home Page" className="menu-link cursor-pointer">Home</a></li>
                     <li><a onClick={() => {handleScroll('about')}} title="About Page" className="menu-link cursor-pointer">About</a></li>
                     <li><a onClick={() => {handleScroll('project')}} title="Project Page" className="menu-link cursor-pointer">Projects</a></li>
-                    <li><a href='/blog' title="Skill Page" className="menu-link cursor-pointer">Blog</a></li>
+                    <li><Link to='/blog' title="Skill Page" className="menu-link cursor-pointer">Blog</Link></li>
                     <li><a onClick={() => {handleScroll('contact')}} title="Contact Page" className="menu-link cursor-pointer">Contact</a></li>
                 </ul>
             </nav>

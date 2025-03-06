@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const Sidebar = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -21,7 +22,7 @@ const Sidebar = () => {
                 </div>
                 <ul className="flex flex-col space-y-6 text-white px-10 mt-10">
                     <li><a href='#home' title="Home Page" className="hover:border-b-2 hover:border-yellow-600">Home</a></li>
-                    <li><a href='#about' title="About Page" className="hover:border-b-2 hover:border-yellow-600">About</a></li>
+                    <li><Link to="/blog" className="hover:border-b-2 hover:border-yellow-600">Blog</Link></li>
                     <li><a href='#skill' title="Skill Page" className="hover:border-b-2 hover:border-yellow-600">Skills</a></li>
                     <li><a href='#project' title="Project Page" className="hover:border-b-2 hover:border-yellow-600">Projects</a></li>
                     <li><a href='#contact' title="Contact Page" className="hover:border-b-2 hover:border-yellow-600">Contact</a></li>
