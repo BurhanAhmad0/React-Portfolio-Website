@@ -66,7 +66,7 @@ const BlogCard = () => {
                             </div>
                             <div className="group relative">
                                 <h3 className="mt-3 text-lg/6 font-semibold text-amber-900 group-hover:text-amber-600">
-                                    <Link to={`/blog/${post.blog_id}`} className="relative z-10">
+                                    <Link to={`/blog/${encodeTitle(post.title)}/${post.blog_id}`} className="relative z-10">
                                         <span className="absolute inset-0" />
                                         {post.title}
                                     </Link>
