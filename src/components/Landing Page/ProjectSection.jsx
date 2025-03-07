@@ -30,7 +30,7 @@ const ProjectSection = () => {
     }, []);
 
     const openPDF = () => {
-        window.open('/src/assets/portfolio/AI-Powered-Ecommerce-Website.pdf', '_blank', 'fullscreen=yes');
+        window.open('/portfolio/AI-Powered-Ecommerce-Website.pdf', '_blank', 'fullscreen=yes');
     }
 
     return (

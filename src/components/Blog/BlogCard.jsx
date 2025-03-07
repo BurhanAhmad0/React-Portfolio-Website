@@ -1,4 +1,4 @@
-import { Client, Databases, Query } from "appwrite";
+import { Client, Databases } from "appwrite";
 import { useEffect, useState } from "react";
 
 const BlogCard = () => {
