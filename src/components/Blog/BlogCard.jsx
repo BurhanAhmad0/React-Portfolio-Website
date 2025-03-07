@@ -1,5 +1,7 @@
 import { Client, Databases } from "appwrite";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import DOMPurify from "dompurify";
 
 const BlogCard = () => {
 
@@ -30,6 +32,13 @@ const BlogCard = () => {
         }
     }
 
+    const encodeTitle = (title) => {
+        return title
+            .trim()
+            .replace(/\s+/g, '-')      // Replace spaces with hyphens
+            .replace(/[^\w\-]+/g, ''); // Remove all non-word characters (except hyphens)
+    };
+
     useEffect(() => {
         fetchBlogs();
     }, []);
@@ -57,15 +66,15 @@ const BlogCard = () => {
                             </div>
                             <div className="group relative">
                                 <h3 className="mt-3 text-lg/6 font-semibold text-amber-900 group-hover:text-amber-600">
-                                    <a href="#">
+                                    <Link to={`/blog/${post.blog_id}`} className="relative z-10">
                                         <span className="absolute inset-0" />
                                         {post.title}
-                                    </a>
+                                    </Link>
                                 </h3>
-                                <p className="mt-5 line-clamp-3 text-sm/6 text-amber-600 overflow-hidden">
+                                <div className="mt-5 line-clamp-3 text-sm/6 text-amber-600 overflow-hidden">
                                     {/* Render HTML content using dangerouslySetInnerHTML */}
-                                    <div dangerouslySetInnerHTML={{ __html: post.html_content }} />
-                                </p>
+                                    <p dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(post.html_content) }} />
+                                </div>
                             </div>
                             <div className="relative mt-8 flex items-center gap-x-4">
                                 <img alt="" src={post.author_image || 'https://media.licdn.com/dms/image/v2/D4D03AQGEbM1ohuv_UQ/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1729061155817?e=1746662400&v=beta&t=TJGrtS9MoE30ivcbJtfwuAij39kqY6YjZTeZjZtKUzU'} className="object-cover object-bottom size-10 rounded-full bg-amber-50" />
