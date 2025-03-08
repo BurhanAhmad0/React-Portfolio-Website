@@ -12,7 +12,7 @@ function App() {
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/blog" element={<Blog />} />
-        <Route path='/blog/:title/:id' element={<BlogView />}></Route>
+        <Route path='/blog/:title' element={<BlogView />}></Route>
       </Routes>
     </>
   )

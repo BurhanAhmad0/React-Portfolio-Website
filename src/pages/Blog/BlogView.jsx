@@ -11,8 +11,15 @@ const BlogView = () => {
 
   const [Blog, setBlog] = useState([])
   const { id } = useParams()
+  const { title } = useParams()
 
   // console.log(id)
+
+  const decodeTitle = (encodedTitle) => {
+    return encodedTitle
+      .replace(/-/g, ' ')          // Replace hyphens with spaces
+      .trim();                     // Trim leading/trailing whitespace
+  };
 
   function fetchBlog() {
     try {
@@ -26,7 +33,7 @@ const BlogView = () => {
         "67c7d35200340bef1c78",
         "67c7d35d0021fa48e045",
         [
-          Query.equal('blog_id', parseInt(id))
+          Query.equal('blog_URI', decodeTitle(title))
         ]
       );
 
