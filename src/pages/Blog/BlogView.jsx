@@ -10,7 +10,7 @@ import BlogFooter from '../../components/Blog/BlogFooter';
 const BlogView = () => {
 
   const [Blog, setBlog] = useState([])
-  const { id } = useParams()
+  // const { id } = useParams()
 
   // console.log(id)
 
@@ -51,7 +51,7 @@ const BlogView = () => {
       {Blog.map((Blog, index) => (
         <div key={index} className='mb-10'>
           <div className="container mx-auto p-4">
-            <div className="bg-white rounded-lg shadow-md p-6">
+            <div className="bg-white rounded-lg shadow-md p-0 sm:p-6">
               <p className="text-gray-600 mb-4">Published by {Blog.author_name} on {new Date(Blog.date_published).toLocaleDateString()}</p>
               <div className="mt-5 text-xl">
                 {/* Render HTML content using dangerouslySetInnerHTML */}

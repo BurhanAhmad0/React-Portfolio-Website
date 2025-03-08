@@ -73,7 +73,7 @@ const BlogCard = () => {
                                 </h3>
                                 <div className="mt-5 line-clamp-3 text-sm/6 text-amber-600 overflow-hidden">
                                     {/* Render HTML content using dangerouslySetInnerHTML */}
-                                    <p dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(post.html_content) }} />
+                                    <p dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(post.html_description) }} />
                                 </div>
                             </div>
                             <div className="relative mt-8 flex items-center gap-x-4">
