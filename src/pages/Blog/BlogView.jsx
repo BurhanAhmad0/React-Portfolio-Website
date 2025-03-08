@@ -10,7 +10,7 @@ import BlogFooter from '../../components/Blog/BlogFooter';
 const BlogView = () => {
 
   const [Blog, setBlog] = useState([])
-  // const { id } = useParams()
+  const { id } = useParams()
 
   // console.log(id)
 
