@@ -32,7 +32,7 @@ const Header = () => {
                 <div className="h-96 flex flex-col justify-center text-white text-2xl">
                     <h1 className="text-6xl font-bold leading-16">Hi, I'm <br /><span className="mt-1 text-yellow-500 text-6xl">Burhan Ahmad</span></h1>
                     <h3 className="mt-3 font-light">I'm A Full Stack Web-Developer Based In Pakistan.</h3>
-                    <a href="/resume/Burhan Ahmad Resume.pdf" download className="mt-5 px-4 py-2 bg-yellow-600 text-white rounded-md text-lg w-fit transition-all hover:bg-yellow-500">Read More</a>
+                    <a href="/resume/Resume.pdf" download className="mt-5 px-4 py-2 bg-yellow-600 text-white rounded-md text-lg w-fit transition-all hover:bg-yellow-500">Read More</a>
                 </div>
                 <div className="hidden md:block">
                     <img loading='lazy' src="/Img/profile-img.jpg" width="350px" alt="Profile Image" className="rounded-full shadow-xl opacity-95" />
