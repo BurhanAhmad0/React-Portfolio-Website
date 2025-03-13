@@ -77,7 +77,7 @@ const BlogCard = () => {
                                 </div>
                             </div>
                             <div className="relative mt-8 flex items-center gap-x-4">
-                                <img alt="" src={post.author_image || 'https://media.licdn.com/dms/image/v2/D4D03AQGEbM1ohuv_UQ/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1729061155817?e=1746662400&v=beta&t=TJGrtS9MoE30ivcbJtfwuAij39kqY6YjZTeZjZtKUzU'} className="object-cover object-bottom size-10 rounded-full bg-amber-50" />
+                                <img loading="lazy" alt="Author" src={post.author_image || 'https://media.licdn.com/dms/image/v2/D4D03AQGEbM1ohuv_UQ/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1729061155817?e=1746662400&v=beta&t=TJGrtS9MoE30ivcbJtfwuAij39kqY6YjZTeZjZtKUzU'} className="object-cover object-bottom size-10 rounded-full bg-amber-50" />
                                 <div className="text-sm/6">
                                     <p className="font-semibold text-amber-900">
                                         {post.author_name}

@@ -12,7 +12,7 @@ const BlogFooter = () => {
                 <div className="md:flex md:justify-between">
                     <div className="mb-6 md:mb-0">
                         <a href="https://flowbite.com/" className="flex items-center">
-                            <img src="/Img/icon-logo-without-bg.png" className="h-12 me-3" alt="FlowBite Logo" />
+                            <img loading='lazy' src="/Img/icon-logo-without-bg.png" className="h-12 me-3" alt="Circle Logo" />
                             <span className="self-center text-2xl font-semibold whitespace-nowrap text-amber-500">Circle</span>
                         </a>
                     </div>

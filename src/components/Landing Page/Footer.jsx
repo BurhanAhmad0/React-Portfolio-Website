@@ -95,6 +95,7 @@ const Footer = () => {
                         href="https://www.facebook.com/profile.php?id=61559623928944"
                     >
                         <img
+                            loading='lazy'
                             className="invert mx-2"
                             src="/Icons/fb-icon.svg"
                             alt="Facebook"
@@ -105,6 +106,7 @@ const Footer = () => {
                         href="https://www.instagram.com/burhan_ahmad001/"
                     >
                         <img
+                            loading='lazy'
                             className="invert mx-2"
                             src="/Icons/insta-icon.svg"
                             alt="Instagram"
@@ -114,26 +116,30 @@ const Footer = () => {
                         target="_blank"
                         href="https://www.tiktok.com/@burhan.developer?is_from_webapp=1&sender_device=pc"
                     >
-                        <img className="mx-2" src="/Icons/tiktok.svg" alt="TikTok" />
+                        <img
+                            loading='lazy' className="mx-2" src="/Icons/tiktok.svg" alt="TikTok" />
                     </a>
                     <a
                         target="_blank"
                         href="https://www.youtube.com/@BurhanDeveloper"
                     >
-                        <img className="mx-2" src="/Icons/youtube.svg" alt="YouTube" />
+                        <img
+                            loading='lazy' className="mx-2" src="/Icons/youtube.svg" alt="YouTube" />
                     </a>
                     <a
                         target="_blank"
                         href="https://www.linkedin.com/in/burhan-ahmad-a8567a241/"
                     >
                         <img
+                            loading='lazy'
                             className="mx-2"
                             src="/Icons/linkedin.svg"
                             alt="LinkedIn"
                         />
                     </a>
                     <a target="_blank" href="https://pin.it/4zcKKJYQd">
-                        <img className="mx-2" src="/Icons/pinterest.svg" alt="Pinterest" />
+                        <img
+                            loading='lazy' className="mx-2" src="/Icons/pinterest.svg" alt="Pinterest" />
                     </a>
                 </div>
             </div>
