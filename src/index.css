@@ -3,26 +3,35 @@
 @font-face {
   font-family: "Poppins";
   src: local("Poppins-Regular"),
-    url('./assets/fonts/Poppins/Poppins-Regular.ttf')
+    url("./assets/fonts/Poppins/Poppins-Regular.ttf");
+}
+
+@theme {
+  --color-primary: #1e1e1e; /* Primary Color */
+  --color-secondary: #e6af2e; /* Secondary Color */
+
+  --breakpoint-xxs: 425px;
+  --breakpoint-xms: 480px;
+  --breakpoint-xsm: 550px;
+  --breakpoint-mlg: 880px;
 }
 
 @layer base {
-
   ::-webkit-scrollbar {
     width: 12px;
     height: 12px;
   }
 
   ::-webkit-scrollbar-track {
-    background: var(--primary-color);
+    background: #1e1e1e;
   }
 
   ::-webkit-scrollbar-thumb {
-    background: rgb(215, 176, 124);
+    background: #e6af2e;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background: #cd853f;
+    background: #d09919;
   }
 
   html {
@@ -41,7 +50,6 @@
     background-repeat: no-repeat;
     height: 100vh;
   }
-
 
   @media (max-width: 768px) {
     .header-bg {

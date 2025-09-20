@@ -1,150 +1,132 @@
-import React, { useState } from 'react';
-import { Client, Databases, ID } from "appwrite";
+import React from "react";
+import { Link } from "react-router-dom";
+import { FaFacebook, FaLinkedin } from "react-icons/fa";
+import { TbBrandFiverr } from "react-icons/tb";
+import { AiFillInstagram } from "react-icons/ai";
+
+import FooterImg from "../../assets/devImg.webp";
 
 const Footer = () => {
-    const [email, setEmail] = useState('');
-    const [comment, setComment] = useState('');
+  return (
+    <footer className="px-10 lg:px-20 bg-primary">
+      <div className="CTA flex flex-col mlg:flex-row justify-between items-center gap-16 py-10">
+        <div className="getConsultation w-full mlg:w-1/2">
+          <p className="border border-white inline px-4 py-1 rounded-full font-medium text-xs text-white">
+            Contact
+          </p>
+          <h2 className="text-3xl font-semibold mt-6 text-white">
+            Get in touch
+          </h2>
+          <div className="emailInput mt-6 p-2 rounded-full flex items-center border border-gray-300 bg-gray-500/25">
+            <input
+              className="flex-1 px-2 xsm:px-4 py-2 bg-transparent outline-none text-gray-700 placeholder-gray-400"
+              type="email"
+              placeholder="Enter your email"
+              name="email"
+              id="email"
+            />
+            <button className="bg-secondary text-white px-2 xms:px-6 py-2 rounded-full hover:bg-secondary/75 cursor-pointer transition duration-300">
+              Subscribe
+            </button>
+          </div>
+        </div>
 
-    const client = new Client()
-        .setEndpoint('https://cloud.appwrite.io/v1')
-        .setProject('67c6bd2300386b359d55');
+        <div className="footerimg w-full h-96 mlg:w-1/2 rounded-xl overflow-hidden">
+          <img
+            loading="lazy"
+            className="object-cover object-top w-full h-full"
+            src={FooterImg}
+            alt="Footer Image"
+          />
+        </div>
+      </div>
 
-    const databases = new Databases(client);
+      <div className="footerLinks pb-16 flex flex-col mlg:flex-row justify-between gap-20">
+        <div className="leftSection w-full mlg:w-1/2">
+          <h2 className="text-3xl font-bold mt-6 text-yellow-500">
+            Burhan Ahmad
+          </h2>
+          <p className="mt-4 text-white text-sm">
+            Building strong brand identities, and developing websites and social
+            media applications.
+          </p>
+          <div className="socialIcons flex gap-2 mt-6">
+            <Link
+              target="_blank"
+              to={
+                "https://www.fiverr.com/ahmadburhan153/be-your-react-js-node-js-developer-and-integrate-apis-to-website-applications?context_referrer=tailored_homepage_perseus&source=recently_viewed_gigs&ref_ctx_id=4065eda2353f49fe81e724dabb54fb5a&context=recommendation&pckg_id=1&pos=2&context_alg=recently_viewed&imp_id=67d84d59-9a61-4f66-b8c1-079b340a58fb"
+              }
+              className="twitter border border-gray-400 w-12 h-12 rounded-full flex items-center justify-center cursor-pointer hover:bg-black/75 transition duration-300"
+            >
+              <TbBrandFiverr color="white" size={20} />
+            </Link>
+            <Link
+              to={"https://www.linkedin.com/in/burhan-developer/"}
+              className="linkedIn border border-gray-400 w-12 h-12 rounded-full flex items-center justify-center cursor-pointer hover:bg-black/75 transition duration-300"
+            >
+              <FaLinkedin color="white" size={20} />
+            </Link>
+            <Link
+              target="_blank"
+              to={"https://www.facebook.com/codiqon"}
+              className="facebook border border-gray-400 w-12 h-12 rounded-full flex items-center justify-center cursor-pointer hover:bg-black/75 transition duration-300"
+            >
+              <FaFacebook color="white" size={20} />
+            </Link>
+            <Link
+              target="_blank"
+              to={"https://www.instagram.com/codiqon/"}
+              className="instagram border border-gray-400 w-12 h-12 rounded-full flex items-center justify-center cursor-pointer hover:bg-black/75 transition duration-300"
+            >
+              <AiFillInstagram color="white" size={20} />
+            </Link>
+          </div>
+        </div>
 
-    const handleSubmit = async (e) => {
-        e.preventDefault(); // Prevent form from refreshing the page
+        <div className="rightSection w-full mlg:w-1/2 grid grid-cols-1 xxs:grid-cols-2 xms:grid-cols-3 gap-7">
+          <div className="column1">
+            <h4 className="text-white font-semibold">Explore</h4>
+            <ul className="mt-4 text-white text-sm space-y-1">
+              <li>What We Offer</li>
+              <li>Case Studies</li>
+              <li>Blog & Insights</li>
+              <li>Resources</li>
+              <li>FAQs</li>
+            </ul>
+          </div>
 
-        try {
-            const response = await databases.createDocument(
-                '67c7d35200340bef1c78', // Replace with your database ID
-                '67c7d8650023cb671d9f', // Replace with your collection ID
-                ID.unique(), // Unique ID for the document
-                {
-                    user_email: email,
-                    user_enquiry: comment,
-                }
-            );
-            // console.log('Document created successfully:', response);
-            // Optionally, clear the form after submission
-            setEmail('');
-            setComment('');
-        } catch (error) {
-            console.error('Error creating document:', error);
-        }
-    };
+          <div className="column2">
+            <h4 className="text-white font-semibold">Company</h4>
+            <ul className="mt-4 text-white text-sm space-y-1">
+              <li>Home</li>
+              <li>About</li>
+              <li>Service</li>
+              <li>Testimonials</li>
+              <li>Pricing</li>
+              <li>Career</li>
+            </ul>
+          </div>
 
-    function currentYear() {
-        return new Date().getFullYear();
-    }
+          <div className="column3">
+            <h4 className="text-white font-semibold">Legal Links</h4>
+            <ul className="mt-4 text-white text-sm space-y-1">
+              <li>What We Offer</li>
+              <li>Case Studies</li>
+              <li>Blog & Insights</li>
+              <li>Resources</li>
+              <li>FAQs</li>
+            </ul>
+          </div>
+        </div>
+      </div>
 
-    return (
-        <footer id='contact' className="border-t-5 border-[burlywood]">
-            <div className="w-full max-w-[45vw] h-[57vh] my-20 mx-auto pt-10 flex items-center justify-center">
-                <form className="flex flex-col" onSubmit={handleSubmit}>
-                    <div className="mb-8">
-                        <label
-                            htmlFor="email"
-                            className="mb-2 text-black font-medium"
-                        >
-                            Email address
-                        </label>
-                        <input
-                            type="email"
-                            id="email"
-                            className="w-full p-2 mt-1 border border-[#d2b48c] bg-[whitesmoke] rounded-md text-[16px] transition-shadow duration-500 focus:outline-none focus:ring-3 focus:ring-[burlywood]"
-                            placeholder="Enter email"
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}
-                        />
-                        <small className="text-[12px] text-[#a0522d]">
-                            We'll never share your email with anyone else.
-                        </small>
-                    </div>
-                    <div className="mb-8">
-                        <label
-                            htmlFor="cmnt"
-                            className="mb-2 text-black font-medium"
-                        >
-                            Enquiry
-                        </label>
-                        <textarea
-                            id="cmnt"
-                            className="w-full h-52 p-2 mt-1 border border-[#d2b48c] bg-[whitesmoke] rounded-md text-[16px] transition-shadow duration-500 focus:outline-none focus:ring-3 focus:ring-[burlywood] resize-none"
-                            rows="3"
-                            placeholder="Write Here"
-                            value={comment}
-                            onChange={(e) => setComment(e.target.value)}
-                        ></textarea>
-                    </div>
-                    <button
-                        type="submit"
-                        className="py-2 px-4 bg-primary bg-[rgb(222,184,135)] text-amber-700 rounded-md font-medium transition-all cursor-pointer hover:bg-[rgb(193,157,110)] hover:border-primary hover:text-primary"
-                    >
-                        Submit
-                    </button>
-                </form>
-            </div>
-
-            <div className="bg-footer-color p-5 text-center flex items-center justify-around border-t border-[#d2b48c]">
-                <p className="text-[14px] text-[#8b4513] font-light m-0">
-                    &copy; {currentYear()} Burhan Ahmad. All rights reserved.
-                </p>
-                <div className="flex space-x-2">
-                    <a
-                        target="_blank"
-                        href="https://www.facebook.com/profile.php?id=61559623928944"
-                    >
-                        <img
-                            loading='lazy'
-                            className="invert mx-2"
-                            src="/Icons/fb-icon.svg"
-                            alt="Facebook"
-                        />
-                    </a>
-                    <a
-                        target="_blank"
-                        href="https://www.instagram.com/burhan_ahmad001/"
-                    >
-                        <img
-                            loading='lazy'
-                            className="invert mx-2"
-                            src="/Icons/insta-icon.svg"
-                            alt="Instagram"
-                        />
-                    </a>
-                    <a
-                        target="_blank"
-                        href="https://www.tiktok.com/@burhan.developer?is_from_webapp=1&sender_device=pc"
-                    >
-                        <img
-                            loading='lazy' className="mx-2" src="/Icons/tiktok.svg" alt="TikTok" />
-                    </a>
-                    <a
-                        target="_blank"
-                        href="https://www.youtube.com/@BurhanDeveloper"
-                    >
-                        <img
-                            loading='lazy' className="mx-2" src="/Icons/youtube.svg" alt="YouTube" />
-                    </a>
-                    <a
-                        target="_blank"
-                        href="https://www.linkedin.com/in/burhan-ahmad-a8567a241/"
-                    >
-                        <img
-                            loading='lazy'
-                            className="mx-2"
-                            src="/Icons/linkedin.svg"
-                            alt="LinkedIn"
-                        />
-                    </a>
-                    <a target="_blank" href="https://pin.it/4zcKKJYQd">
-                        <img
-                            loading='lazy' className="mx-2" src="/Icons/pinterest.svg" alt="Pinterest" />
-                    </a>
-                </div>
-            </div>
-        </footer>
-    );
+      <div className="Copyright border-t border-gray-300 py-7 text-center">
+        <p className="text-sm text-gray-600">
+          &copy; Burhan Ahmad Inc. All Rights Reserved.
+        </p>
+      </div>
+    </footer>
+  );
 };
 
 export default Footer;

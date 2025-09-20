@@ -1,45 +1,97 @@
-import React from 'react'
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Link } from "react-router-dom";
+import { FaArrowRightLong } from "react-icons/fa6";
+import { IoLogoAmplify } from "react-icons/io5";
 
-import Sidebar from './Sidebar'
+import DevImg from "../../assets/devImg.webp";
+
+import Sidebar from "./Sidebar";
 
 const Header = () => {
+  const handleScroll = (targetId) => {
+    const targetElement = document.getElementById(targetId);
+    if (targetElement) {
+      // Scroll smoothly to the target element
+      targetElement.scrollIntoView({ behavior: "smooth" });
+    }
+  };
 
-    const handleScroll = (targetId) => {
-        const targetElement = document.getElementById(targetId);
-        if (targetElement) {
-            // Scroll smoothly to the target element
-            targetElement.scrollIntoView({ behavior: 'smooth' });
-        }
-    };
+  return (
+    <header className="potfolioHeader relative bg-primary flex flex-col items-center justify-center gap-2 pt-10 px-10">
+      <div className="devIntro relative flex flex-col items-center justify-center gap-6">
+        {/* Foreground content */}
+        <h1 className="text-white text-center leading-10 relative z-10">
+          Hii Folks!! I'm Burhan, <br />
+          <span className="text-5xl font-bold text-white">React & Node Js</span>
+        </h1>
 
-    return (
-        <header className="header-bg">
-            <nav className="flex justify-end relative p-5 pr-16">
-                <ul className="hidden lg:flex space-x-8 text-white">
-                    <li><a onClick={() => {handleScroll('home')}} title="Home Page" className="menu-link cursor-pointer">Home</a></li>
-                    <li><a onClick={() => {handleScroll('about')}} title="About Page" className="menu-link cursor-pointer">About</a></li>
-                    <li><a onClick={() => {handleScroll('project')}} title="Project Page" className="menu-link cursor-pointer">Projects</a></li>
-                    <li><Link to='/blog' title="Skill Page" className="menu-link cursor-pointer">Blog</Link></li>
-                    <li><a onClick={() => {handleScroll('contact')}} title="Contact Page" className="menu-link cursor-pointer">Contact</a></li>
-                </ul>
-            </nav>
+        <div className="profession relative z-10 w-72 h-20 bg-gray-500/30 -skew-x-20 flex items-center justify-center backdrop-blur-md border border-white/20">
+          <p className="text-5xl font-bold text-white skew-x-20">Developer</p>
+        </div>
+      </div>
 
-            <Sidebar />
+      <div className="devImg h-[850px] relative z-10 overflow-hidden">
+        <img
+          className="object-cover grayscale-100"
+          loading="lazy"
+          src={DevImg}
+          alt="Developer Image"
+        />
+      </div>
 
-            {/* Hero Section */}
-            <div id='home' className="flex justify-around items-center h-screen">
-                <div className="h-96 flex flex-col justify-center text-white text-2xl">
-                    <h1 className="text-6xl font-bold leading-16">Hi, I'm <br /><span className="mt-1 text-yellow-500 text-6xl">Burhan Ahmad</span></h1>
-                    <h3 className="mt-3 font-light">I'm A Full Stack Web-Developer Based In Pakistan.</h3>
-                    <a href="/resume/Resume.pdf" download className="mt-5 px-4 py-2 bg-yellow-600 text-white rounded-md text-lg w-fit transition-all hover:bg-yellow-500">Read More</a>
-                </div>
-                <div className="hidden md:block">
-                    <img loading='lazy' src="/Img/profile-img.jpg" width="350px" alt="Profile Image" className="rounded-full shadow-xl opacity-95" />
-                </div>
-            </div>
-        </header>
-    )
-}
+      <div className="bottomLinks absolute bottom-0 z-10 w-full pb-10 px-10 flex">
+        <div className="left flex items-end gap-2 w-1/2">
+          <div className="logo w-14 h-14">
+            <IoLogoAmplify size={50} color="#e6af2e" />
+          </div>
+          <p className="text-white text-2xl">
+            wake{" "}
+            <span className="bg-secondary w-4 h-4 rounded-full inline-block"></span>
+            <br />
+            upbruh
+          </p>
+        </div>
 
-export default Header
+        <div className="right text-white flex flex-col items-end gap-5 w-1/2">
+          <button className="cursor-pointer underline text-3xl flex items-center gap-3">
+            Let's Talk!{" "}
+            <span className="bg-secondary flex items-center justify-center w-10 h-10 rounded-full">
+              <FaArrowRightLong size={25} color="#1e1e1e" />
+            </span>
+          </button>
+
+          <button className="cursor-pointer underline text-3xl flex items-center gap-3">
+            View Projects{" "}
+            <span className="bg-secondary flex items-center justify-center w-10 h-10 rounded-full">
+              <FaArrowRightLong size={25} color="#1e1e1e" />
+            </span>
+          </button>
+        </div>
+      </div>
+
+      {/* Background */}
+      <div className="absolute top-0 left-0 w-full h-full bg-gray-400/10 flex flex-col items-center overflow-hidden py-5">
+        <h2 className="text-9xl text-yellow-500/40 font-extrabold text-nowrap self-start">
+          MERN FULL STACK DEVELOPER
+        </h2>
+        <h2 className="text-9xl text-yellow-500/50 font-extrabold text-nowrap self-end">
+          MERN FULL STACK DEVELOPER
+        </h2>
+        <h2 className="text-9xl text-yellow-500/50 font-extrabold text-nowrap self-start">
+          MERN FULL STACK DEVELOPER
+        </h2>
+        <h2 className="text-9xl text-yellow-500/50 font-extrabold text-nowrap self-end">
+          MERN FULL STACK DEVELOPER
+        </h2>
+        <h2 className="text-9xl text-yellow-500/50 font-extrabold text-nowrap self-start">
+          MERN FULL STACK DEVELOPER
+        </h2>
+        <h2 className="text-9xl text-yellow-500/50 font-extrabold text-nowrap self-end">
+          MERN FULL STACK DEVELOPER
+        </h2>
+      </div>
+    </header>
+  );
+};
+
+export default Header;

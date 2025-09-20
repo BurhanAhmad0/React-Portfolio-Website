@@ -1,19 +1,29 @@
-import React from 'react';
+import React from "react";
+import { IoIosArrowRoundForward } from "react-icons/io";
 
 const AboutSection = () => {
-    return (
-        <section id="about" className="border-t-4 border-[burlywood] flex flex-col items-center justify-around py-24 gap-8">
-            <h1 className="text-6xl font-bold">About</h1>
-            <div className="text-center w-3/4">
-                <p className="text-xl leading-relaxed">
-                    I am a skilled web developer specializing in creating stunning websites using pure HTML, CSS, and JavaScript.
-                    With a keen eye for detail and a passion for clean, efficient code, I design websites that are not only
-                    visually appealing but also user-friendly and fast-loading. Whether you need a simple landing page, a personal
-                    blog, or a complete website overhaul, I am here to bring your vision to life.
-                </p>
-            </div>
-        </section>
-    );
+  return (
+    <section className="aboutSection bg-primary py-30 flex flex-col items-center">
+      <h2 className="font-bold text-white text-6xl text-center leading-17">
+        "Building Brands, Products &<br /> Experiences that{" "}
+        <div className="bg-secondary -skew-x-20 inline-block px-3">
+          <p className="skew-x-20">Stick."</p>
+        </div>
+      </h2>
+
+      <p className="text-center text-gray-500 px-40 mt-5 text-lg">
+        Hello, I’m Burhan. With over a year of experience in design and
+        development, I specialize in crafting intuitive interfaces for apps and
+        websites, building strong brand identities, and developing websites and
+        social media applications. My focus is on combining function with form
+        to deliver ideas that enhance and elevate the user experience.
+      </p>
+
+      <button className="bg-secondary hover:bg-secondary/75 transition-all duration-300 w-44 py-3 cursor-pointer font-semibold text-amber-800 text-lg rounded-lg mt-12 flex items-center justify-center gap-1">
+        View Projects <IoIosArrowRoundForward size={30} />
+      </button>
+    </section>
+  );
 };
 
 export default AboutSection;
