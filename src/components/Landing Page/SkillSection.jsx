@@ -29,7 +29,7 @@ const SkillSection = () => {
         className="logosInfiniteTrail py-10 w-full mt-8 overflow-x-hidden 
       flex items-center justify-start mlg:justify-center gap-8 lg:gap-12"
       >
-        <div className="icon1 border-2 border-green-400">
+        <div className="icon1">
           <RiHtml5Fill size={75} className="text-gray-500/50" />
         </div>
         <div className="icon2">
