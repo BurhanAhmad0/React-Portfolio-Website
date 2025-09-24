@@ -8,7 +8,7 @@ import FooterImg from "../../assets/devImg.webp";
 
 const Footer = () => {
   return (
-    <footer className="px-10 lg:px-20 bg-primary">
+    <footer className="px-5 md:px-10 lg:px-20 bg-primary">
       <div className="CTA flex flex-col mlg:flex-row justify-between items-center gap-16 py-10">
         <div className="getConsultation w-full mlg:w-1/2">
           <p className="border border-white inline px-4 py-1 rounded-full font-medium text-xs text-white">

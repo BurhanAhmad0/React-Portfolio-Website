@@ -5,8 +5,8 @@ import ReviewImg1 from "../assets/devImg.webp";
 
 const ReviewCard = () => {
   return (
-    <div className="bg-secondary rounded-xl p-2">
-      <div className="reviewThumbnail h-60 overflow-hidden">
+    <div className="bg-secondary rounded-xl p-2 w-full">
+      <div className="reviewThumbnail h-80 md:h-60 overflow-hidden">
         <img
           className="w-full h-full object-cover object-top"
           loading="lazy"

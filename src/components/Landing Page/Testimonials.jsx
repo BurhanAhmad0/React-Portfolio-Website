@@ -4,8 +4,8 @@ import ReviewCard from "../ReviewCard";
 
 const Testimonials = () => {
   return (
-    <section className="reviewsSection px-20 py-20 bg-primary">
-      <div className="testimonialSecHead flex justify-between">
+    <section className="reviewsSection px-5 md:px-10 lg:px-20 py-20 bg-primary">
+      <div className="testimonialSecHead flex flex-col xsm:flex-row gap-5 justify-between">
         <div className="left">
           <p className="border border-white inline px-4 py-1 rounded-full font-medium text-xs text-white">
             Our Testimonials
@@ -32,13 +32,13 @@ const Testimonials = () => {
         </div>
       </div>
 
-      <div className="reviewCards grid grid-cols-3 gap-5 mt-7">
+      <div className="reviewCards grid grid-cols-1 md:grid-cols-3 gap-5 mt-7">
         {[1, 2, 3].map((index) => {
           return <ReviewCard key={index} />;
         })}
       </div>
 
-      <button className="bg-secondary hover:bg-secondary/75 transition-all duration-300 w-44 py-3 cursor-pointer font-semibold text-amber-800 text-lg rounded-lg mt-12 flex items-center justify-center gap-1">
+      <button className="bg-secondary hover:bg-secondary/75 transition-all duration-300 w-44 py-3 cursor-pointer font-semibold text-black text-lg rounded-lg mt-12 flex items-center justify-center gap-1">
         View all <IoIosArrowRoundForward size={30} />
       </button>
     </section>

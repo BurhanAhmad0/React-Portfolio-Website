@@ -4,7 +4,7 @@ import { MdOutlineArrowOutward } from "react-icons/md";
 
 const ProjectCard = ({ project }) => {
   return (
-    <div className="relative">
+    <div className="relative w-full">
       <div className="projectThumbnail h-68 rounded-xl overflow-hidden">
         <img
           className="w-full h-full object-cover object-top"
@@ -34,7 +34,7 @@ const ProjectCard = ({ project }) => {
       <Link
         to={project.projectLink}
         target="_blank"
-        className="moreIcon cursor-pointer absolute bottom-25 -left-1 z-10 bg-white w-12 h-12 rounded-full flex items-center justify-center"
+        className="moreIcon cursor-pointer absolute bottom-33 mlg:bottom-25 -left-1 z-10 bg-white w-12 h-12 rounded-full flex items-center justify-center"
       >
         <MdOutlineArrowOutward size={30} />
       </Link>

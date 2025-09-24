@@ -17,7 +17,7 @@ const Header = () => {
   };
 
   return (
-    <header className="potfolioHeader relative bg-primary flex flex-col items-center justify-center gap-2 pt-10 px-10">
+    <header className="potfolioHeader relative bg-primary flex flex-col items-center justify-center gap-2 pt-10 px-5 md:px-10">
       <div className="devIntro relative flex flex-col items-center justify-center gap-6">
         {/* Foreground content */}
         <h1 className="text-white text-center leading-10 relative z-10">
@@ -30,7 +30,7 @@ const Header = () => {
         </div>
       </div>
 
-      <div className="devImg h-[850px] relative z-10 overflow-hidden">
+      <div className="devImg h-[500px] smd:h-[850px] relative z-10 overflow-hidden">
         <img
           className="object-cover grayscale-100"
           loading="lazy"
@@ -39,11 +39,12 @@ const Header = () => {
         />
       </div>
 
-      <div className="bottomLinks absolute bottom-0 z-10 w-full pb-10 px-10 flex">
-        <div className="left flex items-end gap-2 w-1/2">
+      <div className="bottomLinks absolute bottom-0 z-10 w-full pb-10 px-5 flex justify-end xms:justify-between">
+        <div className="left hidden xms:flex items-end gap-2 w-1/2">
           <div className="logo w-14 h-14">
             <IoLogoAmplify size={50} color="#e6af2e" />
           </div>
+
           <p className="text-white text-2xl">
             wake{" "}
             <span className="bg-secondary w-4 h-4 rounded-full inline-block"></span>
@@ -52,15 +53,15 @@ const Header = () => {
           </p>
         </div>
 
-        <div className="right text-white flex flex-col items-end gap-5 w-1/2">
-          <button className="cursor-pointer underline text-3xl flex items-center gap-3">
+        <div className="right text-white flex flex-col items-end gap-3 sm:gap-5 w-full xms:w-1/2">
+          <button className="cursor-pointer underline text-xl sm:text-3xl flex items-center gap-3">
             Let's Talk!{" "}
             <span className="bg-secondary flex items-center justify-center w-10 h-10 rounded-full">
               <FaArrowRightLong size={25} color="#1e1e1e" />
             </span>
           </button>
 
-          <button className="cursor-pointer underline text-3xl flex items-center gap-3">
+          <button className="cursor-pointer underline text-xl sm:text-3xl flex items-center gap-3">
             View Projects{" "}
             <span className="bg-secondary flex items-center justify-center w-10 h-10 rounded-full">
               <FaArrowRightLong size={25} color="#1e1e1e" />

@@ -13,7 +13,7 @@ const SkillSection = () => {
   return (
     <section
       id="skills"
-      className="skillsSection relative px-20 py-20 bg-primary/99 flex flex-col items-center"
+      className="skillsSection relative px-5 md:px-10 lg:px-20 py-20 bg-primary/99 flex flex-col items-center"
     >
       <p className="border border-white inline px-4 py-1 rounded-full font-medium text-xs text-white mb-3">
         My Specialities
@@ -27,19 +27,35 @@ const SkillSection = () => {
 
       <div
         className="logosInfiniteTrail py-10 w-full mt-8 overflow-x-hidden 
-      flex items-center justify-center gap-12 text-7xl"
+      flex items-center justify-start mlg:justify-center gap-8 lg:gap-12"
       >
-        <RiHtml5Fill className="text-gray-500/50" />
-        <RiCss3Fill className="text-gray-500/50" />
-        <RiJavascriptFill className="text-gray-500/50" />
-        <RiReactjsLine className="text-gray-500/50" />
-        <RiTailwindCssFill className="text-gray-500/50" />
-        <RiNodejsFill className="text-gray-500/50" />
-        <SiExpress className="text-gray-500/50" />
-        <SiSocketdotio className="text-gray-500/50" />
+        <div className="icon1 border-2 border-green-400">
+          <RiHtml5Fill size={75} className="text-gray-500/50" />
+        </div>
+        <div className="icon2">
+          <RiCss3Fill size={75} className="text-gray-500/50" />
+        </div>
+        <div className="icon3">
+          <RiJavascriptFill size={75} className="text-gray-500/50" />
+        </div>
+        <div className="icon4">
+          <RiReactjsLine size={75} className="text-gray-500/50" />
+        </div>
+        <div className="icon5">
+          <RiTailwindCssFill size={75} className="text-gray-500/50" />
+        </div>
+        <div className="icon6">
+          <RiNodejsFill size={75} className="text-gray-500/50" />
+        </div>
+        <div className="icon7">
+          <SiExpress size={75} className="text-gray-500/50" />
+        </div>
+        <div className="icon8">
+          <SiSocketdotio size={75} className="text-gray-500/50" />
+        </div>
       </div>
 
-      <button className="bg-secondary hover:bg-secondary/75 transition-all duration-300 w-44 py-3 cursor-pointer font-semibold text-amber-800 text-lg rounded-lg mt-12 flex items-center justify-center gap-1 mb-10">
+      <button className="bg-secondary hover:bg-secondary/75 transition-all duration-300 w-44 py-3 cursor-pointer font-semibold text-black text-lg rounded-lg mt-12 flex items-center justify-center gap-1 mb-10">
         Contact us
       </button>
     </section>
