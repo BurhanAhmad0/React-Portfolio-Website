@@ -1,1 +1,6 @@
-/*    /index.html   200
+# Netlify applies the first matching rule; real files in the publish directory are served first.
+# Client-rendered routes get the empty app shell (the prerendered home page lives at /).
+/blog        /app-shell.html   200
+/blog/*      /app-shell.html   200
+# Everything else is a genuine 404 (no more "/* -> 200" soft-404s).
+/*           /404.html         404

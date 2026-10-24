@@ -1,21 +1,25 @@
-import { useState } from 'react'
-import { Routes, Route } from 'react-router-dom'
+import { lazy, Suspense } from "react";
+import { Routes, Route } from "react-router-dom";
+import Home from "./pages/Home.jsx";
+import NotFound from "./pages/NotFound.jsx";
+import ScrollToTop from "./components/ScrollTop.jsx";
 
-import LandingPage from './pages/Landingpage/LandingPage.jsx'
-import Blog from './pages/Blog/Blog.jsx'
-import BlogView from './pages/Blog/BlogView.jsx'
+// The blog (and its Appwrite + DOMPurify dependencies) is code-split away from the landing page.
+const Blog = lazy(() => import("./pages/Blog.jsx"));
+const BlogPost = lazy(() => import("./pages/BlogPost.jsx"));
 
-function App() {
-
+export default function App() {
   return (
     <>
-      <Routes>
-        <Route path="/" element={<LandingPage />} />
-        <Route path="/blog" element={<Blog />} />
-        <Route path='/blog/:title' element={<BlogView />}></Route>
-      </Routes>
+      <Suspense fallback={null}>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/blog" element={<Blog />} />
+          <Route path="/blog/:title" element={<BlogPost />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </Suspense>
+      <ScrollToTop />
     </>
-  )
+  );
 }
-
-export default App

@@ -1,0 +1,20 @@
+/*
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: DENY
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=()
+  Strict-Transport-Security: max-age=31536000
+
+/assets/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/images/*
+  Cache-Control: public, max-age=86400
+
+/app-shell.html
+  X-Robots-Tag: noindex
+
+# Not linked from the site; keep the 14 MB proposal deck out of search results.
+# (noindex header, deliberately NOT blocked in robots.txt so crawlers can see it)
+/portfolio/*
+  X-Robots-Tag: noindex

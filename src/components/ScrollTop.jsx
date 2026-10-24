@@ -1,52 +1,19 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
+import { HiArrowUp } from "react-icons/hi2";
 
-const ScrollToTop = () => {
-  const [isVisible, setIsVisible] = useState(false);
-
-  // Show button when user scrolls down
-  const toggleVisibility = () => {
-    if (window.scrollY > 300) {
-      setIsVisible(true);
-    } else {
-      setIsVisible(false);
-    }
-  };
-
-  // Scroll to top when button is clicked
-  const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
-  };
-
+export default function ScrollToTop() {
+  const [visible, setVisible] = useState(false);
   useEffect(() => {
-    window.addEventListener("scroll", toggleVisibility);
-    return () => {
-      window.removeEventListener("scroll", toggleVisibility);
-    };
+    const onScroll = () => setVisible(window.scrollY > 600);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
-
+  if (!visible) return null;
   return (
-    <div className="fixed bottom-4 right-4">
-      {isVisible && (
-        <button
-          onClick={scrollToTop}
-          className="p-2 w-14 h-14 flex items-center justify-center bg-secondary text-black rounded-lg shadow-lg hover:bg-secondary/75 transition duration-300 cursor-pointer"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="50"
-            height="50"
-            viewBox="0 0 24 24"
-            style={{ fill: "black" }}
-          >
-            <path d="M11 8.414V18h2V8.414l4.293 4.293 1.414-1.414L12 4.586l-6.707 6.707 1.414 1.414z" />
-          </svg>
-        </button>
-      )}
-    </div>
+    <button type="button" aria-label="Back to top"
+      onClick={() => window.scrollTo({ top: 0, behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" })}
+      className="fixed bottom-4 right-4 z-30 inline-flex size-12 items-center justify-center rounded-lg bg-secondary text-primary shadow-lg hover:bg-[#f0c158]">
+      <HiArrowUp size={22} aria-hidden="true" />
+    </button>
   );
-};
-
-export default ScrollToTop;
+}

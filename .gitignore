@@ -36,3 +36,7 @@ yarn-error.log*
 
 # macOS files
 Thumbs.db
+
+# prerender build output
+/dist
+/dist-ssr

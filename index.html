@@ -1,56 +1,80 @@
 <!doctype html>
-<html lang="en" suppressHydrationWarning>
-
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <link rel="icon" type="image/svg+xml" href="/favicon.png" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Burhan Ahmad | Full Stack Developer Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#1e1e1e" />
 
-  <meta name="description"
-    content="Welcome to Burhan Ahmad's portfolio. A skilled Full Stack Developer specializing in creating modern, responsive websites and web applications. Explore my projects, skills, and services." />
-
-  <meta name="keywords"
-    content="Burhan Ahmad, Full Stack Developer, Web Development, Portfolio, JavaScript, React, Node.js, MongoDB, Next.js, Frontend, Backend, Freelance Developer, Software Engineer" />
-
+  <title>Burhan Ahmad | Full Stack Developer (React, Next.js, Node.js)</title>
+  <meta name="description" content="Burhan Ahmad is a full stack developer in Pakistan building web apps with React, Next.js, Node.js and MongoDB. See his projects, skills and how to get in touch." />
   <link rel="canonical" href="https://burhanahmad.netlify.app/" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
 
-  <meta property="og:title" content="Burhan Ahmad | Full Stack Developer Portfolio" />
-  <meta property="og:description"
-    content="Explore my web development projects and learn more about my skills in Full Stack Development." />
-  <meta property="og:image" content="https://burhanahmad.netlify.app/images/portfolio-thumbnail.png" />
-  <meta property="og:url" content="https://burhanahmad.netlify.app/" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
   <meta property="og:type" content="website" />
-
+  <meta property="og:site_name" content="Burhan Ahmad" />
+  <meta property="og:title" content="Burhan Ahmad | Full Stack Developer" />
+  <meta property="og:description" content="Full stack developer building web apps with React, Next.js, Node.js and MongoDB. Projects, skills and contact." />
+  <meta property="og:url" content="https://burhanahmad.netlify.app/" />
+  <meta property="og:image" content="https://burhanahmad.netlify.app/images/portfolio-thumbnail.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Burhan Ahmad, Full Stack Developer: React, Next.js, Node.js, MongoDB" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Burhan Ahmad | Full Stack Developer Portfolio" />
-  <meta name="twitter:description"
-    content="Visit Burhan Ahmad's portfolio to view his Full Stack Development projects, skills, and services." />
+  <meta name="twitter:title" content="Burhan Ahmad | Full Stack Developer" />
+  <meta name="twitter:description" content="Full stack developer building web apps with React, Next.js, Node.js and MongoDB." />
   <meta name="twitter:image" content="https://burhanahmad.netlify.app/images/portfolio-thumbnail.png" />
 
-  <meta name="robots" content="index, follow" />
+  <meta name="p:domain_verify" content="fbceb59510592c482123b58de1179104" />
 
-  <!-- Google tag (gtag.js) -->
+  <link rel="preload" href="/src/assets/fonts/poppins-regular.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/src/assets/fonts/poppins-bold.woff2" as="font" type="font/woff2" crossorigin />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      { "@type": "WebSite", "@id": "https://burhanahmad.netlify.app/#website", "url": "https://burhanahmad.netlify.app/", "name": "Burhan Ahmad", "inLanguage": "en" },
+      {
+        "@type": "Person", "@id": "https://burhanahmad.netlify.app/#person",
+        "name": "Burhan Ahmad", "url": "https://burhanahmad.netlify.app/",
+        "image": "https://burhanahmad.netlify.app/images/portfolio-thumbnail.png",
+        "jobTitle": "Full Stack Developer",
+        "description": "Full stack web developer working with React, Next.js, Node.js, Express and MongoDB.",
+        "address": { "@type": "PostalAddress", "addressCountry": "PK" },
+        "knowsAbout": ["React", "Next.js", "Node.js", "Express", "MongoDB", "Tailwind CSS", "Web development"],
+        "sameAs": ["https://github.com/BurhanAhmad0", "https://www.linkedin.com/in/burhan-developer/"]
+      }
+    ]
+  }
+  </script>
+
+  <!-- Google Analytics (async, non-blocking) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-8DCJY1GD1L"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag() { dataLayer.push(arguments); }
     gtag('js', new Date());
-
     gtag('config', 'G-8DCJY1GD1L');
   </script>
-
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2879937202642274"
-    crossorigin="anonymous"></script>
-
-  <!-- Pinterest -->
-  <meta name="p:domain_verify" content="fbceb59510592c482123b58de1179104" />
-
+  <!-- AdSense is loaded after the page has finished loading so it cannot delay first render or input. -->
+  <script>
+    window.addEventListener('load', function () {
+      var load = function () {
+        var s = document.createElement('script');
+        s.async = true; s.crossOrigin = 'anonymous';
+        s.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2879937202642274';
+        document.head.appendChild(s);
+      };
+      if ('requestIdleCallback' in window) requestIdleCallback(load, { timeout: 4000 });
+      else setTimeout(load, 2000);
+    });
+  </script>
 </head>
-
 <body>
   <div id="root"></div>
   <script type="module" src="/src/main.jsx"></script>
 </body>
-
 </html>

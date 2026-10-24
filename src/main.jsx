@@ -1,22 +1,19 @@
-import React from 'react'
-import { Client } from 'appwrite';
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import { BrowserRouter } from 'react-router-dom'
-import './index.css'
+import { StrictMode } from "react";
+import { createRoot, hydrateRoot } from "react-dom/client";
+import { BrowserRouter } from "react-router-dom";
+import "./index.css";
+import App from "./App.jsx";
 
-import App from './App.jsx'
-
-import ScrollToTop from './components/ScrollTop.jsx'
-
-const client = new Client();
-client.setProject('67c6bd2300386b359d55');
-
-createRoot(document.getElementById('root')).render(
+const root = document.getElementById("root");
+const app = (
   <StrictMode>
     <BrowserRouter>
       <App />
-      <ScrollToTop />
     </BrowserRouter>
-  </StrictMode>,
-)
+  </StrictMode>
+);
+
+// The home page is prerendered at build time (see scripts/prerender.mjs), so hydrate it.
+// Other routes are served an empty shell and render on the client.
+if (root.hasChildNodes()) hydrateRoot(root, app);
+else createRoot(root).render(app);
