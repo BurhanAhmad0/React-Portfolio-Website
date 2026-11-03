@@ -1,6 +1,6 @@
 # Burhan Ahmad — Developer Portfolio
 
-React 19 + Vite 6 + Tailwind CSS 4. Live at <https://burhanahmad.netlify.app/>.
+React 19 + Vite 6 + Tailwind CSS 4. Design: warm off-white / charcoal / burnt-orange accent, Inter (self-hosted variable font). Colour, type and spacing tokens live in `src/index.css` (`@theme`). Live at <https://burhanahmad.netlify.app/>.
 
 ## Scripts
 
@@ -13,8 +13,10 @@ React 19 + Vite 6 + Tailwind CSS 4. Live at <https://burhanahmad.netlify.app/>.
 
 ## Editing content
 
-All text content (links, skills, projects, experience, education) lives in **`src/data/profile.js`**.
-Add a project there and it appears on the page. To show a project's source link, set its `repo` field.
+All text content (services, case studies, process, facts, links, WhatsApp number) lives in **`src/data/profile.js`**.
+- Add a project to `PROJECTS` and it appears as a case study. Every project shows its `status`; use `"Client work"` **only** for genuinely paid client projects.
+- Set `live` / `repo` to `null` to hide a link.
+- The WhatsApp number is `WHATSAPP_NUMBER` at the top of the file (digits only, with country code).
 
 ## How the build works
 
@@ -23,12 +25,12 @@ receive real content; React then hydrates it. `/blog` and `/blog/*` are client-r
 untouched shell `dist/app-shell.html`; any other unknown URL returns a real **404**
 (see `public/_redirects`).
 
-## Contact form (Netlify Forms)
+## Project inquiry form (Netlify Forms)
 
-The form posts to Netlify Forms (no backend, no secrets in code). It only works **on Netlify** after a deploy:
+The form (named `project-inquiry`) posts to Netlify Forms (no backend, no secrets in code). It only works **on Netlify** after a deploy:
 
 1. Deploy. Netlify detects the `contact` form from the prerendered HTML.
-2. Netlify UI → **Forms → contact → Settings & notifications → Add notification → Email** to receive submissions.
+2. Netlify UI → **Forms → project-inquiry → Settings & notifications → Add notification → Email** to receive submissions.
 3. Send a test message from the live site and confirm it arrives. (Delivery cannot be verified from a local build.)
 
 Spam protection: honeypot field (`bot-field`) + Netlify's built-in filtering. Free plan has a monthly submission cap.
@@ -49,4 +51,6 @@ Anything prefixed `VITE_` is **public** — never put secrets in it.
 
 ## Known limitations / owner to-do
 
-See the final report delivered with this change (LinkedIn URL conflict, project repo links, Fiverr URL, consent banner, CSP).
+If the form cannot deliver, visitors see a prefilled email/WhatsApp fallback instead of a false success message.
+
+Open items: confirm LinkedIn URL and WhatsApp number, fix placeholder content in the Ghizer-INN repo, decide on AdSense, add a consent banner if needed.

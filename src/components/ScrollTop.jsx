@@ -12,7 +12,7 @@ export default function ScrollToTop() {
   return (
     <button type="button" aria-label="Back to top"
       onClick={() => window.scrollTo({ top: 0, behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" })}
-      className="fixed bottom-4 right-4 z-30 inline-flex size-12 items-center justify-center rounded-lg bg-secondary text-primary shadow-lg hover:bg-[#f0c158]">
+      className="fixed bottom-4 right-4 z-30 inline-flex size-12 items-center justify-center border border-ink bg-paper text-ink hover:bg-ink hover:text-paper">
       <HiArrowUp size={22} aria-hidden="true" />
     </button>
   );

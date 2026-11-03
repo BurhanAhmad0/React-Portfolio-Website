@@ -1,64 +1,47 @@
-import { FaGithub, FaLinkedin } from "react-icons/fa6";
-import { HiArrowDownTray } from "react-icons/hi2";
 import avatar480 from "../assets/avatar-480.webp";
 import avatar960 from "../assets/avatar-960.webp";
-import { LINKS, SITE } from "../data/profile.js";
+import { SITE } from "../data/profile.js";
 
 export default function Hero() {
   return (
-    <section id="home" className="relative overflow-hidden">
-      <div className="container-page grid items-center gap-10 py-14 lg:grid-cols-[1.15fr_0.85fr] lg:py-20">
-        <div>
-          <p className="eyebrow">Hi, I&rsquo;m</p>
-          <h1 className="mt-3 text-4xl font-bold leading-tight sm:text-5xl lg:text-6xl">
-            {SITE.name}
-            <span className="mt-1 block text-secondary">{SITE.role}</span>
-          </h1>
-          <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted">
-            I build and ship web applications from interface to API with React, Next.js,
-            Node.js and MongoDB. Based in {SITE.location}, I take on freelance projects and
-            I&rsquo;m studying Computer Science.
-          </p>
+    <section id="home" aria-labelledby="hero-title">
+      <div className="container-page pb-16 pt-10 lg:pb-28 lg:pt-16">
+        {/* Location line, factual and verifiable */}
+        <p className="flex flex-wrap items-center gap-x-3 border-t border-line pt-4 text-[0.8125rem] font-medium text-muted">
+          <span>Freelance {SITE.role}</span><span aria-hidden="true">/</span><span>{SITE.location}</span>
+        </p>
 
-          <div className="mt-8 flex flex-wrap gap-3">
-            <a href="#projects" className="btn btn-primary">View projects</a>
-            <a href="#contact" className="btn btn-ghost">Get in touch</a>
-            <a href={LINKS.resume} className="btn btn-ghost" target="_blank" rel="noopener">
-              <HiArrowDownTray aria-hidden="true" /> Resume (PDF)
-            </a>
+        <h1 id="hero-title" className="display mt-10 max-w-[15ch] text-[clamp(2.75rem,8.4vw,7rem)] sm:max-w-[16ch] lg:max-w-[17ch]">
+          I build websites that help businesses <span className="accent-word">turn visitors into customers.</span>
+        </h1>
+
+        <div className="mt-14 grid gap-12 lg:mt-20 lg:grid-cols-12 lg:gap-8">
+          <div className="lg:col-span-6">
+            <p className="max-w-lg text-lg leading-relaxed text-muted sm:text-xl">
+              I&rsquo;m {SITE.name}. I design and develop modern, responsive websites and practical web
+              tools for small businesses: guesthouses, local services, shops and growing brands.
+            </p>
+            <div className="mt-9 flex flex-wrap gap-3">
+              <a href="#contact" className="btn">Discuss your project</a>
+              <a href="#work" className="btn btn-outline">View my work</a>
+            </div>
+            <dl className="mt-14 grid max-w-xl grid-cols-3 gap-6 border-t border-line pt-5 text-sm">
+              <div><dt className="text-muted">Stack</dt><dd className="mt-1 font-medium">React, Node.js, MongoDB</dd></div>
+              <div><dt className="text-muted">Freelancing</dt><dd className="mt-1 font-medium">Since 2023</dd></div>
+              <div><dt className="text-muted">Reach me</dt><dd className="mt-1 font-medium">Email or WhatsApp</dd></div>
+            </dl>
           </div>
 
-          <ul className="mt-8 flex gap-3">
-            <li>
-              <a href={LINKS.github} target="_blank" rel="noopener noreferrer"
-                 aria-label="Burhan Ahmad on GitHub (opens in new tab)"
-                 className="inline-flex size-11 items-center justify-center rounded-full border border-line hover:border-secondary hover:text-secondary">
-                <FaGithub size={20} aria-hidden="true" />
-              </a>
-            </li>
-            <li>
-              <a href={LINKS.linkedin} target="_blank" rel="noopener noreferrer"
-                 aria-label="Burhan Ahmad on LinkedIn (opens in new tab)"
-                 className="inline-flex size-11 items-center justify-center rounded-full border border-line hover:border-secondary hover:text-secondary">
-                <FaLinkedin size={20} aria-hidden="true" />
-              </a>
-            </li>
-          </ul>
-        </div>
-
-        <div className="mx-auto w-full max-w-sm lg:max-w-md">
-          <div className="rounded-3xl bg-secondary/90 pt-6">
-            {/* LCP element: eager, high priority, explicit dimensions to prevent layout shift */}
-            <img
-              src={avatar960}
-              srcSet={`${avatar480} 480w, ${avatar960} 960w`}
-              sizes="(min-width: 1024px) 448px, 384px"
-              width="960" height="1031"
-              fetchPriority="high" decoding="async"
-              alt="Illustrated portrait of Burhan Ahmad, wearing glasses and a grey suit"
-              className="mx-auto h-auto w-4/5"
-            />
-          </div>
+          <figure className="mx-auto w-full max-w-[17rem] sm:max-w-xs lg:col-span-4 lg:col-start-9 lg:max-w-none">
+            <div className="border border-line bg-surface pt-6">
+              {/* LCP candidate on larger screens: eager, high priority, explicit dimensions */}
+              <img src={avatar960} srcSet={`${avatar480} 480w, ${avatar960} 960w`}
+                   sizes="(min-width: 1024px) 340px, 280px" width="960" height="1031"
+                   fetchPriority="high" decoding="async" className="mx-auto h-auto w-[80%]"
+                   alt="Illustrated portrait of Burhan Ahmad, a full-stack web developer, in glasses and a grey suit" />
+            </div>
+            <figcaption className="mt-3 flex justify-between text-xs font-medium text-muted"><span>Burhan Ahmad</span><span>Portrait</span></figcaption>
+          </figure>
         </div>
       </div>
     </section>

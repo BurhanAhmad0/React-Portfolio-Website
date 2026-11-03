@@ -22,7 +22,7 @@ export default function Blog() {
       <Seo title="Blog | Burhan Ahmad" description="Articles by Burhan Ahmad, a full stack developer." path="/blog" />
       <Header home={false} />
       <main className="container-page min-h-[60vh] py-14">
-        <h1 className="text-4xl font-bold">Blog</h1>
+        <h1 className="text-5xl">Blog</h1>
         <div role="status" aria-live="polite" className="mt-8">
           {state.status === "loading" && <p className="text-muted">Loading posts…</p>}
           {state.status === "error" && <p className="text-muted">Posts couldn&rsquo;t be loaded right now. Please try again later.</p>}
@@ -35,7 +35,7 @@ export default function Blog() {
                 {post.date_published ? new Date(post.date_published).toLocaleDateString("en-GB", { dateStyle: "medium" }) : ""}
               </time>
               <h2 className="mt-2 text-xl font-semibold">
-                <Link className="hover:text-secondary" to={`/blog/${slugify(post.blog_URI)}`}>{post.title}</Link>
+                <Link className="hover:text-accent-text" to={`/blog/${slugify(post.blog_URI)}`}>{post.title}</Link>
               </h2>
               <div className="mt-3 line-clamp-3 text-muted"
                    dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(post.html_description ?? "") }} />

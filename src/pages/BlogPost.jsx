@@ -30,7 +30,7 @@ export default function BlogPost() {
       />
       <Header home={false} />
       <main className="container-page min-h-[60vh] py-14">
-        <Link to="/blog" className="text-sm text-muted hover:text-secondary">&larr; All posts</Link>
+        <Link to="/blog" className="text-sm text-muted hover:text-accent-text">&larr; All posts</Link>
         <div role="status" aria-live="polite" className="mt-6">
           {status === "loading" && <p className="text-muted">Loading…</p>}
           {status === "missing" && <p className="text-muted">This post could not be found.</p>}
@@ -38,12 +38,12 @@ export default function BlogPost() {
         </div>
         {post && (
           <article className="mt-4">
-            <h1 className="text-3xl font-bold sm:text-4xl">{post.title}</h1>
+            <h1 className="text-4xl sm:text-5xl">{post.title}</h1>
             <p className="mt-3 text-sm text-muted">
               {post.author_name ? `By ${post.author_name}` : ""}
               {post.date_published ? ` · ${new Date(post.date_published).toLocaleDateString("en-GB", { dateStyle: "long" })}` : ""}
             </p>
-            <div className="mt-8 space-y-4 text-lg leading-relaxed text-muted [&_a]:text-secondary [&_a]:underline [&_h2]:mt-8 [&_h2]:text-2xl [&_h2]:font-semibold [&_h2]:text-white [&_h3]:mt-6 [&_h3]:text-xl [&_h3]:font-semibold [&_h3]:text-white [&_img]:h-auto [&_img]:max-w-full [&_pre]:overflow-x-auto"
+            <div className="mt-8 space-y-4 text-lg leading-relaxed text-muted [&_a]:text-accent-text [&_a]:underline [&_h2]:mt-8 [&_h2]:text-2xl [&_h2]:font-semibold [&_h2]:text-ink [&_h3]:mt-6 [&_h3]:text-xl [&_h3]:font-semibold [&_h3]:text-ink [&_img]:h-auto [&_img]:max-w-full [&_pre]:overflow-x-auto"
                  dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(post.html_content ?? "") }} />
           </article>
         )}
