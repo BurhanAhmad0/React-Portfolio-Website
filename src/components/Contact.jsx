@@ -83,7 +83,7 @@ export default function Contact() {
 
         {/* `data-netlify` makes Netlify Forms detect this form in the built HTML. */}
         <form ref={formRef} name="project-inquiry" method="POST" data-netlify="true" netlify-honeypot="bot-field"
-              onSubmit={onSubmit} noValidate className="space-y-7 lg:col-span-6 lg:col-start-7">
+              onSubmit={onSubmit} noValidate className="space-y-7 lg:col-span-6 lg:col-start-7" netlify>
           <input type="hidden" name="form-name" value="project-inquiry" />
           <p className="hidden" aria-hidden="true"><label>Leave this field empty
             <input name="bot-field" tabIndex={-1} autoComplete="off" value={values["bot-field"]} onChange={set("bot-field")} /></label></p>
