@@ -2,7 +2,13 @@ import { StrictMode } from "react";
 import { createRoot, hydrateRoot } from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
 import "./index.css";
+import { client } from "./lib/appwrite.js";
 import App from "./App.jsx";
+
+client.ping().then(
+  () => console.info("Connected to Appwrite."),
+  (error) => console.error("Failed to connect to Appwrite:", error),
+);
 
 const root = document.getElementById("root");
 const app = (
