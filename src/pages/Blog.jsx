@@ -4,6 +4,7 @@ import DOMPurify from "dompurify";
 import Header from "../components/Header.jsx";
 import Footer from "../components/Footer.jsx";
 import Seo from "../components/Seo.jsx";
+import { BlogListSkeleton } from "../components/Skeletons.jsx";
 import { listPosts, slugify } from "../lib/appwrite.js";
 
 export default function Blog() {
@@ -24,7 +25,12 @@ export default function Blog() {
       <main className="container-page min-h-[60vh] py-14">
         <h1 className="text-5xl">Blog</h1>
         <div role="status" aria-live="polite" className="mt-8">
-          {state.status === "loading" && <p className="text-muted">Loading posts…</p>}
+          {state.status === "loading" && (
+            <>
+              <span className="sr-only">Loading posts…</span>
+              <BlogListSkeleton />
+            </>
+          )}
           {state.status === "error" && <p className="text-muted">Posts couldn&rsquo;t be loaded right now. Please try again later.</p>}
           {state.status === "ready" && state.posts.length === 0 && <p className="text-muted">No posts yet.</p>}
         </div>

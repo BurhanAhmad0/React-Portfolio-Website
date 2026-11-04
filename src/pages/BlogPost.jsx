@@ -4,6 +4,7 @@ import DOMPurify from "dompurify";
 import Header from "../components/Header.jsx";
 import Footer from "../components/Footer.jsx";
 import Seo from "../components/Seo.jsx";
+import { BlogPostSkeleton } from "../components/Skeletons.jsx";
 import { getPost } from "../lib/appwrite.js";
 
 export default function BlogPost() {
@@ -32,10 +33,11 @@ export default function BlogPost() {
       <main className="container-page min-h-[60vh] py-14">
         <Link to="/blog" className="text-sm text-muted hover:text-accent-text">&larr; All posts</Link>
         <div role="status" aria-live="polite" className="mt-6">
-          {status === "loading" && <p className="text-muted">Loading…</p>}
+          {status === "loading" && <span className="sr-only">Loading post…</span>}
           {status === "missing" && <p className="text-muted">This post could not be found.</p>}
           {status === "error" && <p className="text-muted">The post couldn&rsquo;t be loaded right now. Please try again later.</p>}
         </div>
+        {status === "loading" && <BlogPostSkeleton />}
         {post && (
           <article className="mt-4">
             <h1 className="text-4xl sm:text-5xl">{post.title}</h1>
