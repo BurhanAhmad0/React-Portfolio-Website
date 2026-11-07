@@ -6,7 +6,7 @@ import { SITE } from "../data/profile.js";
 // ───────────── Edit these when your setup changes ─────────────
 const LAST_UPDATED = "7 November 2026";
 // Set to false (and remove the AdSense script from index.html) if you stop using Google AdSense.
-const USES_ADSENSE = true;
+const USES_ADSENSE = false;
 // ─────────────────────────────────────────────────────────────
 
 const ext = { target: "_blank", rel: "noopener noreferrer" };
