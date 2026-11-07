@@ -8,6 +8,7 @@ import { PageSkeleton } from "./components/Skeletons.jsx";
 // The blog (and its Appwrite + DOMPurify dependencies) is code-split away from the landing page.
 const Blog = lazy(() => import("./pages/Blog.jsx"));
 const BlogPost = lazy(() => import("./pages/BlogPost.jsx"));
+const Privacy = lazy(() => import("./pages/Privacy.jsx"));
 
 export default function App() {
   return (
@@ -17,6 +18,7 @@ export default function App() {
           <Route path="/" element={<Home />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/blog/:title" element={<BlogPost />} />
+          <Route path="/privacy" element={<Privacy />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Suspense>

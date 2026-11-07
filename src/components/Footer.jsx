@@ -16,6 +16,7 @@ export default function Footer({ home = true }) {
           <ul className="flex flex-wrap gap-x-7 text-sm">
             {NAV.map((n) => <li key={n.id}><a className="u-link inline-flex min-h-11 items-center" href={`${prefix}#${n.id}`}>{n.label}</a></li>)}
             <li><Link className="u-link inline-flex min-h-11 items-center" to="/blog">Blog</Link></li>
+            <li><Link className="u-link inline-flex min-h-11 items-center" to="/privacy">Privacy</Link></li>
           </ul>
         </nav>
         <ul className="flex gap-2 md:col-span-2 md:justify-end">
