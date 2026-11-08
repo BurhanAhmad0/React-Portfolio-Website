@@ -1,0 +1,301 @@
+From 22530c52247deb25ee7e16d720c806eded140e46 Mon Sep 17 00:00:00 2001
+From: Claude <noreply@anthropic.com>
+Date: Sat, 7 Nov 2026 04:58:48 +0000
+Subject: [PATCH 1/4] Add privacy policy page (route, footer link, redirect)
+
+---
+ public/_redirects         |   1 +
+ src/App.jsx               |   2 +
+ src/components/Footer.jsx |   1 +
+ src/pages/Privacy.jsx     | 133 ++++++++++++++++++++++++++++++++++++++
+ 4 files changed, 137 insertions(+)
+ create mode 100644 src/pages/Privacy.jsx
+
+diff --git a/public/_redirects b/public/_redirects
+index 5bd5aef..194e65e 100644
+--- a/public/_redirects
++++ b/public/_redirects
+@@ -2,5 +2,6 @@
+ # Client-rendered routes get the empty app shell (the prerendered home page lives at /).
+ /blog        /app-shell.html   200
+ /blog/*      /app-shell.html   200
++/privacy     /app-shell.html   200
+ # Everything else is a genuine 404 (no more "/* -> 200" soft-404s).
+ /*           /404.html         404
+diff --git a/src/App.jsx b/src/App.jsx
+index 85a0a68..654ac1f 100644
+--- a/src/App.jsx
++++ b/src/App.jsx
+@@ -8,6 +8,7 @@ import { PageSkeleton } from "./components/Skeletons.jsx";
+ // The blog (and its Appwrite + DOMPurify dependencies) is code-split away from the landing page.
+ const Blog = lazy(() => import("./pages/Blog.jsx"));
+ const BlogPost = lazy(() => import("./pages/BlogPost.jsx"));
++const Privacy = lazy(() => import("./pages/Privacy.jsx"));
+ 
+ export default function App() {
+   return (
+@@ -17,6 +18,7 @@ export default function App() {
+           <Route path="/" element={<Home />} />
+           <Route path="/blog" element={<Blog />} />
+           <Route path="/blog/:title" element={<BlogPost />} />
++          <Route path="/privacy" element={<Privacy />} />
+           <Route path="*" element={<NotFound />} />
+         </Routes>
+       </Suspense>
+diff --git a/src/components/Footer.jsx b/src/components/Footer.jsx
+index 31ca778..d208f97 100644
+--- a/src/components/Footer.jsx
++++ b/src/components/Footer.jsx
+@@ -16,6 +16,7 @@ export default function Footer({ home = true }) {
+           <ul className="flex flex-wrap gap-x-7 text-sm">
+             {NAV.map((n) => <li key={n.id}><a className="u-link inline-flex min-h-11 items-center" href={`${prefix}#${n.id}`}>{n.label}</a></li>)}
+             <li><Link className="u-link inline-flex min-h-11 items-center" to="/blog">Blog</Link></li>
++            <li><Link className="u-link inline-flex min-h-11 items-center" to="/privacy">Privacy</Link></li>
+           </ul>
+         </nav>
+         <ul className="flex gap-2 md:col-span-2 md:justify-end">
+diff --git a/src/pages/Privacy.jsx b/src/pages/Privacy.jsx
+new file mode 100644
+index 0000000..72c17dc
+--- /dev/null
++++ b/src/pages/Privacy.jsx
+@@ -0,0 +1,133 @@
++import Header from "../components/Header.jsx";
++import Footer from "../components/Footer.jsx";
++import Seo from "../components/Seo.jsx";
++import { SITE } from "../data/profile.js";
++
++// ───────────── Edit these when your setup changes ─────────────
++const LAST_UPDATED = "7 November 2026";
++// Set to false (and remove the AdSense script from index.html) if you stop using Google AdSense.
++const USES_ADSENSE = true;
++// ─────────────────────────────────────────────────────────────
++
++const ext = { target: "_blank", rel: "noopener noreferrer" };
++const A = ({ href, children }) => (
++  <a href={href} {...ext} className="text-accent-text underline underline-offset-4 hover:text-ink">
++    {children}<span className="sr-only"> (opens in new tab)</span>
++  </a>
++);
++const H2 = ({ children }) => <h2 className="mt-12 text-2xl sm:text-3xl">{children}</h2>;
++
++export default function Privacy() {
++  return (
++    <>
++      <Seo
++        title="Privacy Policy | Burhan Ahmad"
++        description="How this website handles your information: the project inquiry form, analytics, cookies and the third-party services it uses."
++        path="/privacy"
++      />
++      <Header home={false} />
++      <main className="container-page py-14 lg:py-20">
++        <div className="max-w-2xl">
++          <p className="eyebrow">Legal</p>
++          <h1 className="mt-4 text-[clamp(2.25rem,5vw,3.75rem)]">Privacy Policy</h1>
++          <p className="mt-4 text-sm text-muted">Last updated: {LAST_UPDATED}</p>
++
++          <div className="mt-8 space-y-4 leading-relaxed text-muted [&_ul]:list-disc [&_ul]:space-y-2 [&_ul]:pl-6 [&_strong]:font-semibold [&_strong]:text-ink">
++            <p className="text-lg text-ink">
++              This page explains, in plain language, what information this website collects, why, and who
++              else handles it. I keep it short because I try to collect very little.
++            </p>
++
++            <H2>Who I am</H2>
++            <p>
++              This website belongs to {SITE.name}, a freelance web developer based in {SITE.location}. When this
++              page says &ldquo;I&rdquo; or &ldquo;me&rdquo;, it means me. You can contact me at{" "}
++              <a className="text-accent-text underline underline-offset-4 hover:text-ink" href={`mailto:${SITE.email}`}>{SITE.email}</a>.
++            </p>
++
++            <H2>Information you give me</H2>
++            <p>
++              If you send a project inquiry through the contact form, I receive what you type into it: your
++              name, your email address, your project type and project description, and, only if you choose to
++              fill them in, your business name and budget. If you contact me by email or WhatsApp, I receive
++              whatever you send and the contact details that come with it.
++            </p>
++            <p>
++              I use this information only to reply to you, to discuss and quote your project, and to keep a
++              record of our conversation. I don&rsquo;t sell it and I don&rsquo;t add you to a mailing list.
++            </p>
++
++            <H2>Information collected automatically</H2>
++            <ul>
++              <li>
++                <strong>Analytics.</strong> I use Google Analytics to understand how the site is used: which pages
++                are visited, roughly where visitors are from, and what device and browser they use. This relies on
++                cookies or similar identifiers set by Google.
++              </li>
++              {USES_ADSENSE && (
++                <li>
++                  <strong>Advertising.</strong> This site loads Google AdSense. Google may use cookies to show
++                  and measure ads. You can manage ad personalisation in your{" "}
++                  <A href="https://adssettings.google.com">Google ad settings</A>.
++                </li>
++              )}
++              <li>
++                <strong>Technical logs.</strong> Like any website, the hosting provider receives technical data such
++                as your IP address, browser type and the pages requested, in order to deliver and secure the site.
++              </li>
++            </ul>
++            <p>The site itself doesn&rsquo;t set any cookies of its own and has no user accounts or payments.</p>
++
++            <H2>Other services this site uses</H2>
++            <p>Your browser may connect to these services when you use the site, and they receive technical data such as your IP address:</p>
++            <ul>
++              <li><strong>Netlify</strong> hosts the site and delivers contact-form submissions to me (<A href="https://www.netlify.com/privacy/">privacy policy</A>).</li>
++              <li><strong>Google</strong> provides Analytics{USES_ADSENSE ? " and AdSense" : ""} (<A href="https://policies.google.com/privacy">privacy policy</A>).</li>
++              <li><strong>Appwrite</strong> stores and serves the blog posts (<A href="https://appwrite.io/privacy">privacy policy</A>).</li>
++              <li><strong>Cloudinary</strong> serves the project screenshots (<A href="https://cloudinary.com/privacy">privacy policy</A>).</li>
++              <li><strong>WhatsApp</strong>, if you choose to message me there (<A href="https://www.whatsapp.com/legal/privacy-policy">privacy policy</A>).</li>
++            </ul>
++            <p>These companies have their own privacy policies, and I don&rsquo;t control how they handle data.</p>
++
++            <H2>Cookies and your choices</H2>
++            <p>
++              You can block or delete cookies in your browser settings, and you can use the{" "}
++              <A href="https://tools.google.com/dlpage/gaoptout">Google Analytics opt-out add-on</A>. The site
++              still works without cookies.
++            </p>
++
++            <H2>How long I keep information</H2>
++            <p>
++              I keep project inquiries for as long as I need them to reply to you and to keep my business
++              records, and I&rsquo;ll delete them earlier if you ask. Analytics data is kept according to the
++              retention settings in my Google Analytics account.
++            </p>
++
++            <H2>Your rights</H2>
++            <p>
++              You can ask me what information I hold about you, ask me to correct it, or ask me to delete it.
++              Email me at the address above and I&rsquo;ll respond as soon as I reasonably can.
++            </p>
++
++            <H2>Security</H2>
++            <p>
++              The site is served over HTTPS and I don&rsquo;t ask for sensitive information. No website can be
++              guaranteed completely secure, so please don&rsquo;t send passwords or payment details through the
++              contact form.
++            </p>
++
++            <H2>Children</H2>
++            <p>This site is for businesses and isn&rsquo;t aimed at children, and I don&rsquo;t knowingly collect their information.</p>
++
++            <H2>Links to other websites</H2>
++            <p>This site links to other websites, such as GitHub, LinkedIn and my project demos. I&rsquo;m not responsible for their privacy practices.</p>
++
++            <H2>Changes to this policy</H2>
++            <p>If my setup changes, I&rsquo;ll update this page and the date at the top.</p>
++          </div>
++        </div>
++      </main>
++      <Footer home={false} />
++    </>
++  );
++}
+-- 
+2.43.0
+
+
+From a77a9233ddf8a74f4fac0ffd3492fd5afe51d453 Mon Sep 17 00:00:00 2001
+From: Claude <noreply@anthropic.com>
+Date: Wed, 4 Nov 2026 09:32:53 +0000
+Subject: [PATCH 2/4] Blog: style lists/tables in posts, wrap long links; strip
+ home-page head tags from blog shell (fixes duplicate canonical)
+
+---
+ scripts/prerender.mjs  | 11 ++++++++++-
+ src/pages/BlogPost.jsx |  2 +-
+ 2 files changed, 11 insertions(+), 2 deletions(-)
+
+diff --git a/scripts/prerender.mjs b/scripts/prerender.mjs
+index 8d8f310..2ab4fc3 100644
+--- a/scripts/prerender.mjs
++++ b/scripts/prerender.mjs
+@@ -11,7 +11,16 @@ const MARK = '<div id="root"></div>';
+ if (!template.includes(MARK)) throw new Error("prerender: root placeholder not found in dist/index.html");
+ 
+ // Untouched shell for client-rendered routes (/blog, /blog/*). See public/_redirects.
+-fs.writeFileSync(path.join(dist, "app-shell.html"), template);
++// The shell is reused for /blog and /blog/*, where each page sets its own <title>, description,
++// canonical and og:* tags (see components/Seo.jsx). Strip the home page's copies so they don't
++// conflict (a duplicate canonical pointing at "/" would mark every post as a copy of the home page).
++const shell = template
++  .replace(/\s*<title>[\s\S]*?<\/title>/, "")
++  .replace(/\s*<link rel="canonical"[^>]*>/, "")
++  .replace(/\s*<meta name="description"[^>]*>/, "")
++  .replace(/\s*<meta property="og:(title|description|url)"[^>]*>/g, "")
++  .replace(/\s*<meta name="twitter:(title|description)"[^>]*>/g, "");
++fs.writeFileSync(path.join(dist, "app-shell.html"), shell);
+ 
+ const { render } = await import(pathToFileURL(path.resolve("dist-ssr/entry-server.js")).href);
+ const html = render("/");
+diff --git a/src/pages/BlogPost.jsx b/src/pages/BlogPost.jsx
+index 688edb3..a8cf8e9 100644
+--- a/src/pages/BlogPost.jsx
++++ b/src/pages/BlogPost.jsx
+@@ -45,7 +45,7 @@ export default function BlogPost() {
+               {post.author_name ? `By ${post.author_name}` : ""}
+               {post.date_published ? ` · ${new Date(post.date_published).toLocaleDateString("en-GB", { dateStyle: "long" })}` : ""}
+             </p>
+-            <div className="mt-8 space-y-4 text-lg leading-relaxed text-muted [&_a]:text-accent-text [&_a]:underline [&_h2]:mt-8 [&_h2]:text-2xl [&_h2]:font-semibold [&_h2]:text-ink [&_h3]:mt-6 [&_h3]:text-xl [&_h3]:font-semibold [&_h3]:text-ink [&_img]:h-auto [&_img]:max-w-full [&_pre]:overflow-x-auto"
++            <div className="mt-8 space-y-4 text-lg leading-relaxed text-muted [overflow-wrap:anywhere] [&_a]:text-accent-text [&_a]:underline [&_h2]:mt-8 [&_h2]:text-2xl [&_h2]:font-semibold [&_h2]:text-ink [&_h3]:mt-6 [&_h3]:text-xl [&_h3]:font-semibold [&_h3]:text-ink [&_img]:h-auto [&_img]:max-w-full [&_pre]:overflow-x-auto [&_ul]:list-disc [&_ul]:pl-6 [&_ol]:list-decimal [&_ol]:pl-6 [&_li]:mt-2 [&_strong]:font-semibold [&_strong]:text-ink [&_em]:italic [&_table]:block [&_table]:w-full [&_table]:overflow-x-auto [&_table]:border-collapse [&_table]:text-base [&_th]:border-b [&_th]:border-ink [&_th]:p-3 [&_th]:text-left [&_th]:font-semibold [&_th]:text-ink [&_td]:border-b [&_td]:border-line [&_td]:p-3 [&_td]:align-top [&_hr]:my-8 [&_hr]:border-line"
+                  dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(post.html_content ?? "") }} />
+           </article>
+         )}
+-- 
+2.43.0
+
+
+From fce4e0e6cafc59d1a0cda83c6d86c618c110ff70 Mon Sep 17 00:00:00 2001
+From: Claude <noreply@anthropic.com>
+Date: Sat, 7 Nov 2026 04:58:59 +0000
+Subject: [PATCH 3/4] Remove stray 'netlify' attribute on form (data-netlify is
+ what Netlify reads; fixes lint)
+
+---
+ src/components/Contact.jsx | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/components/Contact.jsx b/src/components/Contact.jsx
+index 940b91b..25b9503 100644
+--- a/src/components/Contact.jsx
++++ b/src/components/Contact.jsx
+@@ -83,7 +83,7 @@ export default function Contact() {
+ 
+         {/* `data-netlify` makes Netlify Forms detect this form in the built HTML. */}
+         <form ref={formRef} name="project-inquiry" method="POST" data-netlify="true" netlify-honeypot="bot-field"
+-              onSubmit={onSubmit} noValidate className="space-y-7 lg:col-span-6 lg:col-start-7" netlify>
++              onSubmit={onSubmit} noValidate className="space-y-7 lg:col-span-6 lg:col-start-7">
+           <input type="hidden" name="form-name" value="project-inquiry" />
+           <p className="hidden" aria-hidden="true"><label>Leave this field empty
+             <input name="bot-field" tabIndex={-1} autoComplete="off" value={values["bot-field"]} onChange={set("bot-field")} /></label></p>
+-- 
+2.43.0
+
+
+From 45699e9d2477aba3e40ecd12e8cbe790366adf7a Mon Sep 17 00:00:00 2001
+From: Claude <noreply@anthropic.com>
+Date: Sat, 7 Nov 2026 05:00:08 +0000
+Subject: [PATCH 4/4] Privacy page: headings use primary text colour
+
+---
+ src/pages/Privacy.jsx | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/pages/Privacy.jsx b/src/pages/Privacy.jsx
+index 72c17dc..6139a48 100644
+--- a/src/pages/Privacy.jsx
++++ b/src/pages/Privacy.jsx
+@@ -32,7 +32,7 @@ export default function Privacy() {
+           <h1 className="mt-4 text-[clamp(2.25rem,5vw,3.75rem)]">Privacy Policy</h1>
+           <p className="mt-4 text-sm text-muted">Last updated: {LAST_UPDATED}</p>
+ 
+-          <div className="mt-8 space-y-4 leading-relaxed text-muted [&_ul]:list-disc [&_ul]:space-y-2 [&_ul]:pl-6 [&_strong]:font-semibold [&_strong]:text-ink">
++          <div className="mt-8 space-y-4 leading-relaxed text-muted [&_ul]:list-disc [&_ul]:space-y-2 [&_ul]:pl-6 [&_strong]:font-semibold [&_strong]:text-ink [&_h2]:text-ink">
+             <p className="text-lg text-ink">
+               This page explains, in plain language, what information this website collects, why, and who
+               else handles it. I keep it short because I try to collect very little.
+-- 
+2.43.0
+
