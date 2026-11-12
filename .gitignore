@@ -40,3 +40,6 @@ Thumbs.db
 # prerender build output
 /dist
 /dist-ssr
+
+# Netlify CLI local state
+.netlify

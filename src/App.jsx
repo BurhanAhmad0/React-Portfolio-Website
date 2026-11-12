@@ -4,6 +4,7 @@ import Home from "./pages/Home.jsx";
 import NotFound from "./pages/NotFound.jsx";
 import ScrollToTop from "./components/ScrollTop.jsx";
 import { PageSkeleton } from "./components/Skeletons.jsx";
+import AssistantLauncher from "./components/assistant/AssistantLauncher.jsx";
 
 // The blog (and its Appwrite + DOMPurify dependencies) is code-split away from the landing page.
 const Blog = lazy(() => import("./pages/Blog.jsx"));
@@ -23,6 +24,7 @@ export default function App() {
         </Routes>
       </Suspense>
       <ScrollToTop />
+      <AssistantLauncher />
     </>
   );
 }

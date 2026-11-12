@@ -4,7 +4,7 @@ import Seo from "../components/Seo.jsx";
 import { SITE } from "../data/profile.js";
 
 // ───────────── Edit these when your setup changes ─────────────
-const LAST_UPDATED = "7 November 2026";
+const LAST_UPDATED = "10 November 2026";
 // Set to false (and remove the AdSense script from index.html) if you stop using Google AdSense.
 const USES_ADSENSE = false;
 // ─────────────────────────────────────────────────────────────
@@ -57,6 +57,14 @@ export default function Privacy() {
               record of our conversation. I don&rsquo;t sell it and I don&rsquo;t add you to a mailing list.
             </p>
 
+            <H2>The AI assistant chat</H2>
+            <p>
+              If you use the portfolio assistant chat, the messages you type are sent through a server function
+              to an AI service (Anthropic), which generates the reply. My server doesn&rsquo;t keep a copy of
+              your messages. The AI provider processes them under its own policy, and replies can be
+              inaccurate, so please don&rsquo;t include personal or sensitive details in the chat.
+            </p>
+
             <H2>Information collected automatically</H2>
             <ul>
               <li>
@@ -84,6 +92,7 @@ export default function Privacy() {
               <li><strong>Netlify</strong> hosts the site and delivers contact-form submissions to me (<A href="https://www.netlify.com/privacy/">privacy policy</A>).</li>
               <li><strong>Google</strong> provides Analytics{USES_ADSENSE ? " and AdSense" : ""} (<A href="https://policies.google.com/privacy">privacy policy</A>).</li>
               <li><strong>Appwrite</strong> stores and serves the blog posts (<A href="https://appwrite.io/privacy">privacy policy</A>).</li>
+              <li><strong>Anthropic</strong> provides the AI model behind the portfolio assistant chat (<A href="https://www.anthropic.com/legal/privacy">privacy policy</A>).</li>
               <li><strong>Cloudinary</strong> serves the project screenshots (<A href="https://cloudinary.com/privacy">privacy policy</A>).</li>
               <li><strong>WhatsApp</strong>, if you choose to message me there (<A href="https://www.whatsapp.com/legal/privacy-policy">privacy policy</A>).</li>
             </ul>

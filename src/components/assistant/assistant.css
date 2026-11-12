@@ -1,0 +1,66 @@
+/* Styles for the AI assistant only. Loaded with the lazy chunk, so the main CSS is untouched.
+   Uses the site's design tokens (paper, ink, accent, line) from src/index.css. */
+
+/* Glass panel. Opacity is high enough that text stays readable over any section, including the dark one. */
+.assistant-glass {
+  background: rgb(248 248 245 / 0.9);
+  -webkit-backdrop-filter: blur(18px) saturate(1.5);
+  backdrop-filter: blur(18px) saturate(1.5);
+  border: 1px solid rgb(255 255 255 / 0.7);
+  box-shadow: 0 28px 60px -24px rgb(23 23 23 / 0.45), 0 2px 10px rgb(23 23 23 / 0.08), inset 0 1px 0 rgb(255 255 255 / 0.8);
+}
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .assistant-glass { background: var(--color-paper); }
+}
+
+/* Secondary text: darker than --color-muted so it passes contrast over any background behind the glass. */
+.assistant-muted { color: #545454; }
+
+/* Open / close */
+.assistant-window {
+  transform-origin: bottom right;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(14px) scale(0.96);
+  transition: opacity 0.26s ease, transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), visibility 0s linear 0.3s;
+}
+.assistant-window[data-state="open"] {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+  transition-delay: 0s;
+}
+
+/* Floating button */
+.assistant-fab {
+  box-shadow: 0 10px 28px -8px rgb(23 23 23 / 0.55);
+  transition: transform 0.2s ease, background-color 0.2s ease, color 0.2s ease;
+}
+.assistant-fab:hover { transform: translateY(-2px); }
+.assistant-fab-icon { position: relative; display: grid; place-items: center; width: 26px; height: 26px; }
+.assistant-fab-icon > svg { grid-area: 1 / 1; transition: opacity 0.2s ease, transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1); }
+.assistant-fab-x { opacity: 0; transform: rotate(-90deg) scale(0.6); }
+.assistant-fab-icon.is-open .assistant-fab-chat { opacity: 0; transform: rotate(90deg) scale(0.6); }
+.assistant-fab-icon.is-open .assistant-fab-x { opacity: 1; transform: none; }
+
+/* Messages and typing dots */
+.assistant-msg { animation: assistant-pop 0.28s cubic-bezier(0.2, 0.8, 0.2, 1) both; }
+@keyframes assistant-pop { from { opacity: 0; transform: translateY(8px) scale(0.98); } to { opacity: 1; transform: none; } }
+
+.assistant-dot { width: 7px; height: 7px; border-radius: 9999px; background: var(--color-ink); opacity: 0.4; animation: assistant-bounce 1.1s infinite ease-in-out; }
+@keyframes assistant-bounce { 0%, 60%, 100% { transform: translateY(0); opacity: 0.4; } 30% { transform: translateY(-4px); opacity: 1; } }
+
+/* A short, friendly pulse on first appearance (3 times, then it stops) */
+@media (prefers-reduced-motion: no-preference) {
+  .assistant-fab::after {
+    content: ""; position: absolute; inset: 0; border-radius: 9999px; border: 2px solid var(--color-accent);
+    animation: assistant-ring 1.8s ease-out 3; pointer-events: none;
+  }
+  @keyframes assistant-ring { from { opacity: 0.8; transform: scale(1); } to { opacity: 0; transform: scale(1.55); } }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .assistant-window, .assistant-fab, .assistant-fab-icon > svg { transition-duration: 0.01ms !important; transition-delay: 0s !important; }
+  .assistant-msg, .assistant-dot { animation: none !important; }
+  .assistant-dot { opacity: 0.7; }
+}
