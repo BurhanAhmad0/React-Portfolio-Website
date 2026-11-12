@@ -1,7 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Only list URLs that are public, return 200 and whose <link rel="canonical"> points to themselves.
+  After publishing a blog post in Appwrite, add it below (the URL is /blog/<blog_URI with spaces replaced by hyphens>).
+  Update <lastmod> only when the page content really changes.
+-->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://burhanahmad.netlify.app/</loc>
-    <lastmod>2026-11-02</lastmod>
+    <lastmod>2026-11-12</lastmod>
   </url>
+  <url>
+    <loc>https://burhanahmad.netlify.app/blog</loc>
+  </url>
+
+  <!-- Add each published article here, for example:
+  <url>
+    <loc>https://burhanahmad.netlify.app/blog/hotel-website-or-booking-com</loc>
+    <lastmod>2026-11-12</lastmod>
+  </url>
+  <url>
+    <loc>https://burhanahmad.netlify.app/blog/business-website-costing-you-customers</loc>
+    <lastmod>2026-11-12</lastmod>
+  </url>
+  -->
 </urlset>

@@ -1,4 +1,7 @@
 User-agent: *
+# The AI assistant's server endpoint. It only accepts POST requests, so there is nothing to crawl.
+# (Listed first so that simple robots.txt parsers, which use the first matching rule, also honour it.)
+Disallow: /api/
 Allow: /
 
 Sitemap: https://burhanahmad.netlify.app/sitemap.xml
